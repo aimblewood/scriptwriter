@@ -22,15 +22,15 @@
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow:hidden}
 body{display:flex;flex-direction:column}
 
-.header{padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--surface)}
+.header{padding:12px 16px;display:flex;align-items:center;gap:10px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--surface);flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:8px}
 .logo svg{width:22px;height:22px}
 .logo span{font-weight:600;font-size:15px;letter-spacing:-.3px}
 .logo .sub{color:var(--text-dim);font-weight:400;font-size:12px;margin-left:4px}
-.header-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
+.header-actions{margin-left:auto;display:flex;gap:6px;align-items:center;flex-wrap:wrap}
 
 .toggle-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dim);font-weight:500}
-.toggle{width:38px;height:20px;border-radius:10px;background:var(--surface3);border:1px solid var(--border);cursor:pointer;position:relative;transition:background .2s,border-color .2s;flex-shrink:0}
+.toggle{width:38px;height:20px;border-radius:10px;background:var(--surface3);border:1px solid var(--border);cursor:pointer;position:relative;transition:background .2s,border-color .2s;flex-shrink:0;-webkit-tap-highlight-color:transparent}
 .toggle.on{background:var(--accent);border-color:var(--accent-glow)}
 .toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)}
 .toggle.on::after{transform:translateX(18px)}
@@ -52,11 +52,10 @@ body{display:flex;flex-direction:column}
 
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 
-.tag-panel{background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;overflow:hidden;display:flex;flex-direction:column;max-height:45vh;transition:max-height .3s}
+.tag-panel{background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;overflow:hidden;display:flex;flex-direction:column;max-height:40vh;transition:max-height .3s}
 .tag-panel.collapsed{max-height:0;border-bottom:none}
 .tag-grid{padding:10px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;overflow-y:auto;-webkit-overflow-scrolling:touch;align-content:flex-start}
 .tag-section-label{width:100%;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-top:8px;padding-bottom:3px;border-bottom:1px solid var(--border);margin-bottom:2px}
-.tag-section-label:first-child{margin-top:0}
 
 .tag-btn{padding:6px 11px;border-radius:16px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;border:1px solid;cursor:pointer;transition:all .12s;-webkit-tap-highlight-color:transparent;user-select:none;white-space:nowrap}
 .tag-btn:active{transform:scale(.94)}
@@ -68,17 +67,31 @@ body{display:flex;flex-direction:column}
 .tag-btn.custom{background:rgba(253,121,168,.1);border-color:rgba(253,121,168,.3);color:#fd9dbf}
 .tag-btn.in-stack{box-shadow:0 0 0 2px var(--green)}
 
-.stack-bar{padding:8px 16px;background:var(--surface2);border-bottom:1px solid var(--border);display:none;align-items:center;gap:8px;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+/* SAVED STACKS BAR */
+.saved-stacks{padding:6px 16px;background:var(--surface2);border-bottom:1px solid var(--border);display:none;align-items:center;gap:8px;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
+.saved-stacks.visible{display:flex}
+.saved-stacks .label{font-size:10px;font-weight:600;color:var(--orange);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+.saved-stack-btn{padding:5px 10px;border-radius:14px;font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(253,203,110,.1);border:1px solid rgba(253,203,110,.3);color:var(--orange);white-space:nowrap;cursor:pointer;display:flex;align-items:center;gap:6px;-webkit-tap-highlight-color:transparent;user-select:none;transition:all .12s}
+.saved-stack-btn:active{transform:scale(.95);background:rgba(253,203,110,.2)}
+.saved-stack-btn .x{opacity:.5;font-size:14px;line-height:1}
+.saved-stack-btn .x:active{opacity:1}
+
+/* STACK BUILDER */
+.stack-bar{padding:8px 16px;background:var(--surface2);border-bottom:1px solid var(--border);display:none;flex-direction:column;gap:6px;flex-shrink:0}
 .stack-bar.visible{display:flex}
-.stack-bar .label{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
-.stack-pills{display:flex;gap:4px;flex:1;overflow-x:auto}
+.stack-top{display:flex;align-items:center;gap:8px}
+.stack-top .label{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
+.stack-actions{display:flex;gap:6px;flex-shrink:0;margin-left:auto}
+.stack-pills{display:flex;gap:4px;flex:1;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .stack-pills::-webkit-scrollbar{display:none}
 .stack-pill{padding:4px 8px;border-radius:12px;font-family:'JetBrains Mono',monospace;font-size:11px;background:rgba(0,206,201,.15);border:1px solid rgba(0,206,201,.3);color:var(--green);white-space:nowrap;display:flex;align-items:center;gap:4px}
-.stack-pill .x{cursor:pointer;opacity:.6;font-size:13px}
-.stack-pill .x:hover{opacity:1}
-.stack-actions{display:flex;gap:6px;flex-shrink:0}
+.stack-pill .x{cursor:pointer;opacity:.6;font-size:13px;line-height:1}
+.stack-save-row{display:flex;gap:6px;align-items:center}
+.stack-save-row .input{flex:1;padding:6px 10px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface3);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:12px;outline:none}
+.stack-save-row .input:focus{border-color:var(--accent)}
+.stack-save-row .input::placeholder{color:var(--text-muted)}
 
-.editor-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative}
+.editor-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden}
 .editor{flex:1;padding:16px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;color:var(--text);background:var(--bg);border:none;outline:none;resize:none;width:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .editor::placeholder{color:var(--text-muted)}
 
@@ -126,7 +139,7 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
 </head>
 <body>
 
-<div class="toast" id="toast">Copied to clipboard!</div>
+<div class="toast" id="toast"></div>
 
 <div class="header">
   <div class="logo">
@@ -136,55 +149,59 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
   <div class="header-actions">
     <div class="toggle-wrap">
       <span>CAPS</span>
-      <div class="toggle" id="capsToggle" onclick="toggleCaps()"></div>
+      <div class="toggle" id="capsToggle"></div>
     </div>
-    <button class="btn sm" onclick="toggleStack()" id="stackToggleBtn">
+    <button class="btn sm" id="stackToggleBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M3 15h18"/></svg>
       Stack
     </button>
-    <button class="btn sm" onclick="openCustomModal()">
+    <button class="btn sm" id="libraryBtn">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
       Library
     </button>
   </div>
 </div>
 
-<div class="tabs">
-  <div class="tab active" data-cat="emotions" onclick="switchTab(this)">Emotions</div>
-  <div class="tab" data-cat="delivery" onclick="switchTab(this)">Delivery</div>
-  <div class="tab" data-cat="reactions" onclick="switchTab(this)">Reactions</div>
-  <div class="tab" data-cat="sfx" onclick="switchTab(this)">SFX</div>
-  <div class="tab" data-cat="accents" onclick="switchTab(this)">Accents</div>
-</div>
+<div class="tabs" id="tabBar"></div>
 
 <div class="main">
   <div class="tag-panel" id="tagPanel">
     <div class="tag-grid" id="tagGrid"></div>
   </div>
-  <div class="collapse-toggle" id="collapseToggle" onclick="togglePanel()">
+  <div class="collapse-toggle" id="collapseToggle">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
   </div>
 
+  <!-- SAVED STACKS -->
+  <div class="saved-stacks" id="savedStacksBar"></div>
+
+  <!-- STACK BUILDER -->
   <div class="stack-bar" id="stackBar">
-    <span class="label">Stack</span>
-    <div class="stack-pills" id="stackPills"></div>
-    <div class="stack-actions">
-      <button class="btn sm green" onclick="insertStack()">Insert</button>
-      <button class="btn sm danger" onclick="clearStack()">Clear</button>
+    <div class="stack-top">
+      <span class="label">Building stack</span>
+      <div class="stack-pills" id="stackPills"></div>
+      <div class="stack-actions">
+        <button class="btn sm green" id="insertStackBtn">Insert</button>
+        <button class="btn sm danger" id="clearStackBtn">Clear</button>
+      </div>
+    </div>
+    <div class="stack-save-row">
+      <input class="input" id="stackNameInput" placeholder="Name this stack...">
+      <button class="btn sm primary" id="saveStackBtn">Save</button>
     </div>
   </div>
 
   <div class="editor-wrap">
-    <textarea class="editor" id="editor" placeholder="Start writing your script here...&#10;&#10;Use the tag buttons above to insert [audio tags] into your text.&#10;&#10;Example:&#10;[excited] Welcome to the show! [pause] [whispers] But first, a secret..."></textarea>
+    <textarea class="editor" id="editor" placeholder="Start writing your script here...&#10;&#10;Tap tags above to insert [audio tags].&#10;&#10;Example:&#10;[excited] Welcome to the show! [pause] [whispers] But first, a secret..."></textarea>
   </div>
 </div>
 
 <div class="bottom-bar">
-  <button class="btn primary" onclick="selectAndCopy()">
+  <button class="btn primary" id="copyBtn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
     Select All &amp; Copy
   </button>
-  <button class="btn" onclick="clearEditor()">
+  <button class="btn" id="clearBtn">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
     Clear
   </button>
@@ -192,14 +209,14 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
 </div>
 
 <!-- LIBRARY MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
-  <div class="modal" onclick="event.stopPropagation()">
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal" id="modalContent">
     <h3>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
       My Tag Library
     </h3>
     <div class="input-row">
-      <input class="input" id="customTagInput" placeholder="Tag name (e.g. menacing)" onkeydown="if(event.key==='Enter')addCustomTag()" style="flex:2;min-width:120px">
+      <input class="input" id="customTagInput" placeholder="Tag name (e.g. menacing)" style="flex:2;min-width:120px">
       <select class="input" id="customCatSelect" style="flex:1;min-width:110px">
         <option value="emotions">Emotions</option>
         <option value="delivery">Delivery</option>
@@ -207,256 +224,329 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
         <option value="sfx">SFX</option>
         <option value="accents">Accents</option>
       </select>
-      <button class="btn primary sm" onclick="addCustomTag()">Add</button>
+      <button class="btn primary sm" id="addCustomBtn">Add</button>
     </div>
     <div class="custom-list" id="customList"></div>
   </div>
 </div>
 
 <script>
-// ── STATE ──
-let capsOn = false;
-let stackMode = false;
-let stack = [];
-let activeTab = 'emotions';
+(function(){
+  // ── STATE ──
+  let capsOn = false;
+  let stackMode = false;
+  let stack = [];
+  let activeTab = 'emotions';
 
-const STORAGE_KEY = 'el_script_custom_tags_v2';
-let customTags = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+  const TAGS_KEY = 'el_custom_tags_v3';
+  const STACKS_KEY = 'el_saved_stacks_v1';
+  let customTags = load(TAGS_KEY, []);
+  let savedStacks = load(STACKS_KEY, []);
 
-// Migrate from v1 format (plain strings → objects)
-if (customTags.length && typeof customTags[0] === 'string') {
-  customTags = customTags.map(t => ({ name: t, category: 'emotions' }));
-  saveCustom();
-}
+  // Migrate v1/v2 custom tags
+  if (customTags.length && typeof customTags[0] === 'string') {
+    customTags = customTags.map(t => ({ name: t, category: 'emotions' }));
+    save(TAGS_KEY, customTags);
+  }
 
-// ── BUILT-IN TAG DATA ──
-const builtinTags = {
-  emotions: [
-    'excited','sad','angry','happy','sorrowful','fearful','disgusted',
-    'surprised','calm','anxious','nostalgic','hopeful','bitter',
-    'tender','melancholic','joyful','frustrated','content','desperate',
-    'amused','weary','defiant','sympathetic','proud','ashamed'
-  ],
-  delivery: [
-    'whispers','shouts','softly','gently','firmly','slowly','quickly',
-    'rushed','drawn out','monotone','sing-song','matter-of-fact',
-    'dramatically','sarcastically','breathlessly','hesitantly',
-    'confidently','nervously','deadpan','under breath','loudly',
-    'seductively','robotic','gravelly','raspy'
-  ],
-  reactions: [
-    'laughs','sighs','gasps','clears throat','sniffles','groans',
-    'chuckles','cries','screams','yawns','coughs','hiccups',
-    'laughs softly','laughs nervously','exhales sharply','inhales deeply',
-    'tuts','snorts','whimpers','scoffs','gulps','stammers','stutters'
-  ],
-  sfx: [
-    'gunshot','explosion','thunder','rain','wind','doorbell','knock',
-    'footsteps','clapping','glass breaking','phone ringing','car horn',
-    'siren','birds chirping','crowd noise','static','beep','whoosh',
-    'splash','creak','buzz','click','heartbeat','ticking clock'
-  ],
-  accents: [
-    'American accent','British accent','Australian accent','Irish accent',
-    'Scottish accent','French accent','German accent','Italian accent',
-    'Spanish accent','Russian accent','Japanese accent','Indian accent',
-    'Southern US accent','New York accent','Cockney accent','Texan accent',
-    'pirate voice','old man voice','child voice','narrator voice',
-    'news anchor voice','movie trailer voice'
-  ]
-};
+  // ── BUILT-IN TAGS ──
+  const builtinTags = {
+    emotions: ['excited','sad','angry','happy','sorrowful','fearful','disgusted','surprised','calm','anxious','nostalgic','hopeful','bitter','tender','melancholic','joyful','frustrated','content','desperate','amused','weary','defiant','sympathetic','proud','ashamed'],
+    delivery: ['whispers','shouts','softly','gently','firmly','slowly','quickly','rushed','drawn out','monotone','sing-song','matter-of-fact','dramatically','sarcastically','breathlessly','hesitantly','confidently','nervously','deadpan','under breath','loudly','seductively','robotic','gravelly','raspy'],
+    reactions: ['laughs','sighs','gasps','clears throat','sniffles','groans','chuckles','cries','screams','yawns','coughs','hiccups','laughs softly','laughs nervously','exhales sharply','inhales deeply','tuts','snorts','whimpers','scoffs','gulps','stammers','stutters'],
+    sfx: ['gunshot','explosion','thunder','rain','wind','doorbell','knock','footsteps','clapping','glass breaking','phone ringing','car horn','siren','birds chirping','crowd noise','static','beep','whoosh','splash','creak','buzz','click','heartbeat','ticking clock'],
+    accents: ['American accent','British accent','Australian accent','Irish accent','Scottish accent','French accent','German accent','Italian accent','Spanish accent','Russian accent','Japanese accent','Indian accent','Southern US accent','New York accent','Cockney accent','Texan accent','pirate voice','old man voice','child voice','narrator voice','news anchor voice','movie trailer voice']
+  };
 
-const catClass = { emotions:'emotion', delivery:'delivery', reactions:'reaction', sfx:'sfx', accents:'accent' };
-const catLabels = { emotions:'Emotions', delivery:'Delivery', reactions:'Reactions', sfx:'SFX', accents:'Accents' };
+  const catClass = { emotions:'emotion', delivery:'delivery', reactions:'reaction', sfx:'sfx', accents:'accent' };
+  const catLabels = { emotions:'Emotions', delivery:'Delivery', reactions:'Reactions', sfx:'SFX', accents:'Accents' };
+  const catOrder = ['emotions','delivery','reactions','sfx','accents'];
 
-// ── HELPERS ──
-function esc(s) { return s.replace(/'/g, "\\'"); }
-function formatTag(name) { return capsOn ? `[${name.toUpperCase()}]` : `[${name}]`; }
-function getCustomForCat(cat) { return customTags.filter(t => t.category === cat).map(t => t.name); }
+  // ── DOM REFS ──
+  const $ = id => document.getElementById(id);
+  const editorEl = $('editor');
+  const tagGrid = $('tagGrid');
+  const stackPills = $('stackPills');
+  const savedStacksBar = $('savedStacksBar');
 
-// ── CORE ──
-function toggleCaps() {
-  capsOn = !capsOn;
-  document.getElementById('capsToggle').classList.toggle('on', capsOn);
-  renderTags(); renderStack();
-}
+  // ── STORAGE ──
+  function load(key, fallback) { try { return JSON.parse(localStorage.getItem(key)) || fallback; } catch(e) { return fallback; } }
+  function save(key, val) { localStorage.setItem(key, JSON.stringify(val)); }
 
-function toggleStack() {
-  stackMode = !stackMode;
-  document.getElementById('stackBar').classList.toggle('visible', stackMode);
-  document.getElementById('stackToggleBtn').classList.toggle('primary', stackMode);
-  renderTags();
-}
+  // ── HELPERS ──
+  function fmt(name) { return capsOn ? '[' + name.toUpperCase() + ']' : '[' + name + ']'; }
+  function display(name) { return capsOn ? name.toUpperCase() : name; }
 
-function togglePanel() {
-  document.getElementById('tagPanel').classList.toggle('collapsed');
-  document.getElementById('collapseToggle').classList.toggle('flipped');
-}
+  function toast(msg) {
+    const t = $('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(t._timer);
+    t._timer = setTimeout(() => t.classList.remove('show'), 1800);
+  }
 
-function switchTab(el) {
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  el.classList.add('active');
-  activeTab = el.dataset.cat;
-  renderTags();
-}
+  function insertAtCursor(text) {
+    const start = editorEl.selectionStart, end = editorEl.selectionEnd;
+    editorEl.value = editorEl.value.substring(0, start) + text + editorEl.value.substring(end);
+    editorEl.selectionStart = editorEl.selectionEnd = start + text.length;
+    editorEl.focus();
+    updateCount();
+  }
 
-function renderTags() {
-  const grid = document.getElementById('tagGrid');
-  const cat = activeTab;
-  const cls = catClass[cat];
-  const builtins = builtinTags[cat] || [];
-  const customs = getCustomForCat(cat);
-  let html = '';
+  function updateCount() {
+    $('charCount').textContent = editorEl.value.length + ' chars';
+  }
 
-  // Built-in tags
-  html += builtins.map(t => {
-    const inStack = stack.includes(t);
-    return `<button class="tag-btn ${cls} ${inStack ? 'in-stack' : ''}" onclick="handleTag('${esc(t)}')">${capsOn ? t.toUpperCase() : t}</button>`;
-  }).join('');
+  // ── TABS ──
+  function renderTabs() {
+    $('tabBar').innerHTML = catOrder.map(cat =>
+      '<div class="tab' + (cat === activeTab ? ' active' : '') + '" data-cat="' + cat + '">' + catLabels[cat] + '</div>'
+    ).join('');
+  }
 
-  // Custom tags in this category
-  if (customs.length) {
-    html += `<div class="tag-section-label">My custom tags</div>`;
-    html += customs.map(t => {
-      const inStack = stack.includes(t);
-      return `<button class="tag-btn custom ${inStack ? 'in-stack' : ''}" onclick="handleTag('${esc(t)}')">${capsOn ? t.toUpperCase() : t}</button>`;
+  $('tabBar').addEventListener('click', function(e) {
+    const tab = e.target.closest('.tab');
+    if (!tab) return;
+    activeTab = tab.dataset.cat;
+    renderTabs();
+    renderTags();
+  });
+
+  // ── TAG GRID ──
+  function renderTags() {
+    const cat = activeTab;
+    const cls = catClass[cat];
+    const builtins = builtinTags[cat] || [];
+    const customs = customTags.filter(t => t.category === cat);
+    let html = '';
+
+    builtins.forEach(function(t) {
+      var inStack = stackMode && stack.indexOf(t) > -1;
+      html += '<button class="tag-btn ' + cls + (inStack ? ' in-stack' : '') + '" data-tag="' + encodeURIComponent(t) + '">' + display(t) + '</button>';
+    });
+
+    if (customs.length) {
+      html += '<div class="tag-section-label">My custom tags</div>';
+      customs.forEach(function(t) {
+        var inStack = stackMode && stack.indexOf(t.name) > -1;
+        html += '<button class="tag-btn custom' + (inStack ? ' in-stack' : '') + '" data-tag="' + encodeURIComponent(t.name) + '">' + display(t.name) + '</button>';
+      });
+    }
+
+    tagGrid.innerHTML = html || '<div style="color:var(--text-muted);font-size:13px;padding:8px">No tags in this category.</div>';
+  }
+
+  // Event delegation for tag clicks
+  tagGrid.addEventListener('click', function(e) {
+    var btn = e.target.closest('.tag-btn');
+    if (!btn || !btn.dataset.tag) return;
+    var name = decodeURIComponent(btn.dataset.tag);
+
+    if (stackMode) {
+      var idx = stack.indexOf(name);
+      if (idx > -1) stack.splice(idx, 1); else stack.push(name);
+      renderStack();
+      renderTags();
+    } else {
+      insertAtCursor(fmt(name) + ' ');
+    }
+  });
+
+  // ── CAPS TOGGLE ──
+  $('capsToggle').addEventListener('click', function() {
+    capsOn = !capsOn;
+    this.classList.toggle('on', capsOn);
+    renderTags();
+    renderStack();
+    renderSavedStacks();
+  });
+
+  // ── STACK BUILDER ──
+  $('stackToggleBtn').addEventListener('click', function() {
+    stackMode = !stackMode;
+    $('stackBar').classList.toggle('visible', stackMode);
+    this.classList.toggle('primary', stackMode);
+    renderTags();
+  });
+
+  function renderStack() {
+    stackPills.innerHTML = stack.map(function(t, i) {
+      return '<div class="stack-pill" data-idx="' + i + '">' + display(t) + ' <span class="x" data-remove="' + i + '">&times;</span></div>';
     }).join('');
   }
 
-  grid.innerHTML = html || '<div style="color:var(--text-muted);font-size:13px;padding:8px">No tags in this category.</div>';
-}
-
-function handleTag(name) {
-  if (stackMode) {
-    const idx = stack.indexOf(name);
-    if (idx > -1) stack.splice(idx, 1); else stack.push(name);
+  stackPills.addEventListener('click', function(e) {
+    var rm = e.target.closest('[data-remove]');
+    if (!rm) return;
+    stack.splice(parseInt(rm.dataset.remove), 1);
     renderStack(); renderTags();
-  } else {
-    insertAtCursor(formatTag(name) + ' ');
-  }
-}
-
-function insertAtCursor(text) {
-  const el = document.getElementById('editor');
-  const start = el.selectionStart, end = el.selectionEnd;
-  el.value = el.value.substring(0, start) + text + el.value.substring(end);
-  el.selectionStart = el.selectionEnd = start + text.length;
-  el.focus(); updateCount();
-}
-
-function renderStack() {
-  document.getElementById('stackPills').innerHTML = stack.map((t, i) => `
-    <div class="stack-pill">${capsOn ? t.toUpperCase() : t}
-      <span class="x" onclick="event.stopPropagation();removeFromStack(${i})">&times;</span>
-    </div>`).join('');
-}
-
-function removeFromStack(i) { stack.splice(i, 1); renderStack(); renderTags(); }
-
-function insertStack() {
-  if (!stack.length) return;
-  insertAtCursor(stack.map(t => formatTag(t)).join(' ') + ' ');
-}
-
-function clearStack() { stack = []; renderStack(); renderTags(); }
-
-function selectAndCopy() {
-  const el = document.getElementById('editor');
-  el.select(); el.setSelectionRange(0, el.value.length);
-  navigator.clipboard.writeText(el.value).then(() => showToast('Copied to clipboard!'));
-}
-
-function clearEditor() {
-  if (document.getElementById('editor').value && !confirm('Clear the entire script?')) return;
-  document.getElementById('editor').value = ''; updateCount();
-}
-
-function updateCount() {
-  document.getElementById('charCount').textContent = document.getElementById('editor').value.length + ' chars';
-}
-
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg; t.classList.add('show');
-  setTimeout(() => t.classList.remove('show'), 1800);
-}
-
-// ── CUSTOM TAG LIBRARY ──
-function openCustomModal() {
-  document.getElementById('modalOverlay').classList.add('visible');
-  const sel = document.getElementById('customCatSelect');
-  if (sel.querySelector(`option[value="${activeTab}"]`)) sel.value = activeTab;
-  renderCustomList();
-  setTimeout(() => document.getElementById('customTagInput').focus(), 100);
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('modalOverlay'))
-    document.getElementById('modalOverlay').classList.remove('visible');
-}
-
-function addCustomTag() {
-  const input = document.getElementById('customTagInput');
-  const cat = document.getElementById('customCatSelect').value;
-  const val = input.value.trim().replace(/^\[|\]$/g, '');
-  if (!val) return;
-
-  // Duplicate check across builtins + customs
-  const allBuiltins = Object.values(builtinTags).flat().map(s => s.toLowerCase());
-  if (allBuiltins.includes(val.toLowerCase())) { showToast('Already a built-in tag'); return; }
-  if (customTags.find(t => t.name.toLowerCase() === val.toLowerCase())) { showToast('Tag already exists'); return; }
-
-  customTags.push({ name: val, category: cat });
-  saveCustom(); input.value = '';
-  renderCustomList(); renderTags();
-  showToast(`Added to ${catLabels[cat]}`);
-}
-
-function removeCustomTag(i) {
-  const removed = customTags[i].name;
-  customTags.splice(i, 1);
-  const si = stack.indexOf(removed);
-  if (si > -1) { stack.splice(si, 1); renderStack(); }
-  saveCustom(); renderCustomList(); renderTags();
-}
-
-function saveCustom() { localStorage.setItem(STORAGE_KEY, JSON.stringify(customTags)); }
-
-function renderCustomList() {
-  const container = document.getElementById('customList');
-  if (!customTags.length) {
-    container.innerHTML = '<span style="color:var(--text-muted);font-size:12px">No custom tags yet. Add one above — it\'ll appear in its category tab alongside the built-ins.</span>';
-    return;
-  }
-  // Group by category
-  const groups = {};
-  customTags.forEach((t, i) => {
-    if (!groups[t.category]) groups[t.category] = [];
-    groups[t.category].push({ ...t, idx: i });
   });
 
-  const order = ['emotions','delivery','reactions','sfx','accents'];
-  let html = '';
-  for (const cat of order) {
-    if (!groups[cat]) continue;
-    const cls = catClass[cat];
-    html += `<div class="custom-group">
-      <div class="custom-group-label"><span class="custom-group-dot ${cat}"></span>${catLabels[cat]}</div>
-      <div class="custom-group-items">
-        ${groups[cat].map(t => `
-          <div class="custom-item">
-            <span class="tag-btn ${cls}" style="cursor:default">${t.name}</span>
-            <button class="remove" onclick="removeCustomTag(${t.idx})">&times;</button>
-          </div>`).join('')}
-      </div>
-    </div>`;
-  }
-  container.innerHTML = html;
-}
+  $('insertStackBtn').addEventListener('click', function() {
+    if (!stack.length) return;
+    insertAtCursor(stack.map(fmt).join(' ') + ' ');
+  });
 
-// ── INIT ──
-document.getElementById('editor').addEventListener('input', updateCount);
-renderTags(); updateCount();
+  $('clearStackBtn').addEventListener('click', function() {
+    stack = []; renderStack(); renderTags();
+  });
+
+  $('saveStackBtn').addEventListener('click', function() {
+    if (!stack.length) { toast('Add tags to the stack first'); return; }
+    var nameInput = $('stackNameInput');
+    var name = nameInput.value.trim() || ('Stack ' + (savedStacks.length + 1));
+    savedStacks.push({ name: name, tags: stack.slice() });
+    save(STACKS_KEY, savedStacks);
+    nameInput.value = '';
+    stack = [];
+    renderStack(); renderTags(); renderSavedStacks();
+    toast('Stack "' + name + '" saved');
+  });
+
+  $('stackNameInput').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') $('saveStackBtn').click();
+  });
+
+  // ── SAVED STACKS ──
+  function renderSavedStacks() {
+    if (!savedStacks.length) {
+      savedStacksBar.classList.remove('visible');
+      savedStacksBar.innerHTML = '';
+      return;
+    }
+    savedStacksBar.classList.add('visible');
+    var html = '<span class="label">Stacks</span>';
+    savedStacks.forEach(function(s, i) {
+      var preview = s.tags.map(function(t) { return display(t); }).join(' + ');
+      html += '<div class="saved-stack-btn" data-stack-idx="' + i + '" title="' + preview + '">' + s.name + ' <span class="x" data-del-stack="' + i + '">&times;</span></div>';
+    });
+    savedStacksBar.innerHTML = html;
+  }
+
+  savedStacksBar.addEventListener('click', function(e) {
+    // Delete
+    var del = e.target.closest('[data-del-stack]');
+    if (del) {
+      e.stopPropagation();
+      var idx = parseInt(del.dataset.delStack);
+      savedStacks.splice(idx, 1);
+      save(STACKS_KEY, savedStacks);
+      renderSavedStacks();
+      return;
+    }
+    // Insert
+    var btn = e.target.closest('[data-stack-idx]');
+    if (!btn) return;
+    var si = parseInt(btn.dataset.stackIdx);
+    var s = savedStacks[si];
+    if (!s) return;
+    insertAtCursor(s.tags.map(fmt).join(' ') + ' ');
+    toast('Inserted "' + s.name + '"');
+  });
+
+  // ── PANEL COLLAPSE ──
+  $('collapseToggle').addEventListener('click', function() {
+    $('tagPanel').classList.toggle('collapsed');
+    this.classList.toggle('flipped');
+  });
+
+  // ── BOTTOM BAR ──
+  $('copyBtn').addEventListener('click', function() {
+    editorEl.select();
+    editorEl.setSelectionRange(0, editorEl.value.length);
+    navigator.clipboard.writeText(editorEl.value).then(function() { toast('Copied to clipboard!'); });
+  });
+
+  $('clearBtn').addEventListener('click', function() {
+    if (editorEl.value && !confirm('Clear the entire script?')) return;
+    editorEl.value = '';
+    updateCount();
+  });
+
+  editorEl.addEventListener('input', updateCount);
+
+  // ── LIBRARY MODAL ──
+  $('libraryBtn').addEventListener('click', function() {
+    $('modalOverlay').classList.add('visible');
+    var sel = $('customCatSelect');
+    if (sel.querySelector('option[value="' + activeTab + '"]')) sel.value = activeTab;
+    renderCustomList();
+    setTimeout(function() { $('customTagInput').focus(); }, 100);
+  });
+
+  $('modalOverlay').addEventListener('click', function(e) {
+    if (e.target === this) this.classList.remove('visible');
+  });
+
+  $('modalContent').addEventListener('click', function(e) { e.stopPropagation(); });
+
+  $('addCustomBtn').addEventListener('click', addCustomTag);
+  $('customTagInput').addEventListener('keydown', function(e) { if (e.key === 'Enter') addCustomTag(); });
+
+  function addCustomTag() {
+    var input = $('customTagInput');
+    var cat = $('customCatSelect').value;
+    var val = input.value.trim().replace(/^\[|\]$/g, '');
+    if (!val) return;
+
+    var allBuiltins = [];
+    catOrder.forEach(function(c) { allBuiltins = allBuiltins.concat(builtinTags[c]); });
+    var lower = val.toLowerCase();
+    if (allBuiltins.some(function(b) { return b.toLowerCase() === lower; })) { toast('Already a built-in tag'); return; }
+    if (customTags.some(function(t) { return t.name.toLowerCase() === lower; })) { toast('Tag already exists'); return; }
+
+    customTags.push({ name: val, category: cat });
+    save(TAGS_KEY, customTags);
+    input.value = '';
+    renderCustomList();
+    renderTags();
+    toast('Added to ' + catLabels[cat]);
+  }
+
+  function renderCustomList() {
+    var container = $('customList');
+    if (!customTags.length) {
+      container.innerHTML = '<span style="color:var(--text-muted);font-size:12px">No custom tags yet. Add one above and it\'ll appear in its category tab.</span>';
+      return;
+    }
+    var groups = {};
+    customTags.forEach(function(t, i) {
+      if (!groups[t.category]) groups[t.category] = [];
+      groups[t.category].push({ name: t.name, idx: i });
+    });
+
+    var html = '';
+    catOrder.forEach(function(cat) {
+      if (!groups[cat]) return;
+      var cls = catClass[cat];
+      html += '<div class="custom-group"><div class="custom-group-label"><span class="custom-group-dot ' + cat + '"></span>' + catLabels[cat] + '</div><div class="custom-group-items">';
+      groups[cat].forEach(function(t) {
+        html += '<div class="custom-item"><span class="tag-btn ' + cls + '" style="cursor:default">' + t.name + '</span><button class="remove" data-del-custom="' + t.idx + '">&times;</button></div>';
+      });
+      html += '</div></div>';
+    });
+    container.innerHTML = html;
+  }
+
+  $('customList').addEventListener('click', function(e) {
+    var del = e.target.closest('[data-del-custom]');
+    if (!del) return;
+    var idx = parseInt(del.dataset.delCustom);
+    var removed = customTags[idx].name;
+    customTags.splice(idx, 1);
+    var si = stack.indexOf(removed);
+    if (si > -1) { stack.splice(si, 1); renderStack(); }
+    save(TAGS_KEY, customTags);
+    renderCustomList();
+    renderTags();
+  });
+
+  // ── INIT ──
+  renderTabs();
+  renderTags();
+  renderSavedStacks();
+  updateCount();
+
+})();
 </script>
 </body>
 </html>
