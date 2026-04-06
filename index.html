@@ -22,7 +22,6 @@
 html,body{height:100%;background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow:hidden}
 body{display:flex;flex-direction:column}
 
-/* HEADER */
 .header{padding:12px 16px;display:flex;align-items:center;gap:12px;border-bottom:1px solid var(--border);flex-shrink:0;background:var(--surface)}
 .logo{display:flex;align-items:center;gap:8px}
 .logo svg{width:22px;height:22px}
@@ -30,14 +29,12 @@ body{display:flex;flex-direction:column}
 .logo .sub{color:var(--text-dim);font-weight:400;font-size:12px;margin-left:4px}
 .header-actions{margin-left:auto;display:flex;gap:8px;align-items:center}
 
-/* TOGGLE */
 .toggle-wrap{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-dim);font-weight:500}
 .toggle{width:38px;height:20px;border-radius:10px;background:var(--surface3);border:1px solid var(--border);cursor:pointer;position:relative;transition:background .2s,border-color .2s;flex-shrink:0}
 .toggle.on{background:var(--accent);border-color:var(--accent-glow)}
 .toggle::after{content:'';position:absolute;top:2px;left:2px;width:14px;height:14px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.4)}
 .toggle.on::after{transform:translateX(18px)}
 
-/* BUTTONS */
 .btn{display:inline-flex;align-items:center;gap:5px;padding:7px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'Outfit',sans-serif;font-size:13px;font-weight:500;cursor:pointer;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;user-select:none}
 .btn:active{transform:scale(.96)}
 .btn.primary{background:var(--accent);border-color:var(--accent-glow);color:#fff}
@@ -47,22 +44,20 @@ body{display:flex;flex-direction:column}
 .btn.sm{padding:5px 9px;font-size:12px}
 .btn svg{width:14px;height:14px;flex-shrink:0}
 
-/* TABS */
 .tabs{display:flex;gap:2px;padding:10px 16px 0;flex-shrink:0;background:var(--bg);overflow-x:auto;-webkit-overflow-scrolling:touch}
 .tabs::-webkit-scrollbar{display:none}
 .tab{padding:8px 14px;font-size:13px;font-weight:500;color:var(--text-dim);cursor:pointer;border-radius:var(--radius-sm) var(--radius-sm) 0 0;border:1px solid transparent;border-bottom:none;transition:all .15s;white-space:nowrap;-webkit-tap-highlight-color:transparent;user-select:none}
 .tab.active{background:var(--surface);color:var(--text);border-color:var(--border)}
 .tab:not(.active):active{background:var(--surface2)}
 
-/* MAIN LAYOUT */
 .main{flex:1;display:flex;flex-direction:column;overflow:hidden}
 
-/* TAG PANEL */
 .tag-panel{background:var(--surface);border-bottom:1px solid var(--border);flex-shrink:0;overflow:hidden;display:flex;flex-direction:column;max-height:45vh;transition:max-height .3s}
 .tag-panel.collapsed{max-height:0;border-bottom:none}
-.tag-grid{padding:10px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.tag-grid{padding:10px 16px 12px;display:flex;flex-wrap:wrap;gap:6px;overflow-y:auto;-webkit-overflow-scrolling:touch;align-content:flex-start}
+.tag-section-label{width:100%;font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.8px;color:var(--text-muted);margin-top:8px;padding-bottom:3px;border-bottom:1px solid var(--border);margin-bottom:2px}
+.tag-section-label:first-child{margin-top:0}
 
-/* TAG BUTTONS */
 .tag-btn{padding:6px 11px;border-radius:16px;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:500;border:1px solid;cursor:pointer;transition:all .12s;-webkit-tap-highlight-color:transparent;user-select:none;white-space:nowrap}
 .tag-btn:active{transform:scale(.94)}
 .tag-btn.emotion{background:rgba(108,92,231,.12);border-color:rgba(108,92,231,.35);color:#a99bff}
@@ -73,7 +68,6 @@ body{display:flex;flex-direction:column}
 .tag-btn.custom{background:rgba(253,121,168,.1);border-color:rgba(253,121,168,.3);color:#fd9dbf}
 .tag-btn.in-stack{box-shadow:0 0 0 2px var(--green)}
 
-/* STACK BAR */
 .stack-bar{padding:8px 16px;background:var(--surface2);border-bottom:1px solid var(--border);display:none;align-items:center;gap:8px;flex-shrink:0;overflow-x:auto;-webkit-overflow-scrolling:touch}
 .stack-bar.visible{display:flex}
 .stack-bar .label{font-size:11px;font-weight:600;color:var(--green);text-transform:uppercase;letter-spacing:.5px;flex-shrink:0}
@@ -84,36 +78,40 @@ body{display:flex;flex-direction:column}
 .stack-pill .x:hover{opacity:1}
 .stack-actions{display:flex;gap:6px;flex-shrink:0}
 
-/* EDITOR */
 .editor-wrap{flex:1;display:flex;flex-direction:column;overflow:hidden;position:relative}
 .editor{flex:1;padding:16px;font-family:'JetBrains Mono',monospace;font-size:14px;line-height:1.7;color:var(--text);background:var(--bg);border:none;outline:none;resize:none;width:100%;overflow-y:auto;-webkit-overflow-scrolling:touch}
 .editor::placeholder{color:var(--text-muted)}
 
-/* BOTTOM BAR */
 .bottom-bar{padding:10px 16px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;gap:8px;flex-shrink:0}
 .char-count{font-size:12px;color:var(--text-muted);font-family:'JetBrains Mono',monospace;margin-left:auto}
 
-/* CUSTOM TAG MODAL */
 .modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.6);z-index:100;display:none;align-items:flex-end;justify-content:center;backdrop-filter:blur(4px)}
 .modal-overlay.visible{display:flex}
 .modal{background:var(--surface);border-radius:var(--radius) var(--radius) 0 0;width:100%;max-width:480px;padding:20px;border:1px solid var(--border);border-bottom:none;max-height:70vh;overflow-y:auto}
 .modal h3{font-size:16px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
 .modal h3 svg{width:18px;height:18px;color:var(--pink)}
-.input-row{display:flex;gap:8px;margin-bottom:12px}
-.input{flex:1;padding:9px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none}
+.input-row{display:flex;gap:8px;margin-bottom:12px;flex-wrap:wrap}
+.input{padding:9px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--surface2);color:var(--text);font-family:'JetBrains Mono',monospace;font-size:13px;outline:none}
 .input:focus{border-color:var(--accent)}
 .input::placeholder{color:var(--text-muted)}
-select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238886a0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px}
-.custom-list{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%238886a0' stroke-width='2'%3E%3Cpath d='M6 9l6 6 6-6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 10px center;padding-right:28px;cursor:pointer}
+.custom-list{margin-top:12px}
+.custom-group{margin-bottom:14px}
+.custom-group-label{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.6px;color:var(--text-dim);margin-bottom:6px;display:flex;align-items:center;gap:6px}
+.custom-group-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.custom-group-dot.emotions{background:#a99bff}
+.custom-group-dot.delivery{background:#5ee8e4}
+.custom-group-dot.reactions{background:#fdcb6e}
+.custom-group-dot.sfx{background:#ff8a8a}
+.custom-group-dot.accents{background:#90c5ff}
+.custom-group-items{display:flex;flex-wrap:wrap;gap:6px}
 .custom-item{display:flex;align-items:center;gap:4px}
 .custom-item .remove{width:18px;height:18px;border-radius:50%;border:1px solid var(--border);background:transparent;color:var(--red);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;line-height:1}
 
-/* COLLAPSE TOGGLE */
 .collapse-toggle{padding:6px 16px;background:var(--surface);border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;flex-shrink:0}
 .collapse-toggle svg{width:16px;height:16px;color:var(--text-dim);transition:transform .3s}
 .collapse-toggle.flipped svg{transform:rotate(180deg)}
 
-/* TOAST */
 .toast{position:fixed;top:20px;left:50%;transform:translateX(-50%) translateY(-60px);padding:10px 20px;border-radius:var(--radius);background:var(--green);color:#000;font-weight:600;font-size:13px;z-index:200;transition:transform .3s cubic-bezier(.34,1.56,.64,1);pointer-events:none}
 .toast.show{transform:translateX(-50%) translateY(0)}
 
@@ -128,10 +126,8 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
 </head>
 <body>
 
-<!-- TOAST -->
 <div class="toast" id="toast">Copied to clipboard!</div>
 
-<!-- HEADER -->
 <div class="header">
   <div class="logo">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"/><path d="M19 10v2a7 7 0 0 1-14 0v-2"/><line x1="12" y1="19" x2="12" y2="22"/></svg>
@@ -153,18 +149,15 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
   </div>
 </div>
 
-<!-- TABS -->
 <div class="tabs">
   <div class="tab active" data-cat="emotions" onclick="switchTab(this)">Emotions</div>
   <div class="tab" data-cat="delivery" onclick="switchTab(this)">Delivery</div>
   <div class="tab" data-cat="reactions" onclick="switchTab(this)">Reactions</div>
   <div class="tab" data-cat="sfx" onclick="switchTab(this)">SFX</div>
   <div class="tab" data-cat="accents" onclick="switchTab(this)">Accents</div>
-  <div class="tab" data-cat="custom" onclick="switchTab(this)">My Library</div>
 </div>
 
 <div class="main">
-  <!-- TAG PANEL -->
   <div class="tag-panel" id="tagPanel">
     <div class="tag-grid" id="tagGrid"></div>
   </div>
@@ -172,7 +165,6 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 9l6 6 6-6"/></svg>
   </div>
 
-  <!-- STACK BAR -->
   <div class="stack-bar" id="stackBar">
     <span class="label">Stack</span>
     <div class="stack-pills" id="stackPills"></div>
@@ -182,13 +174,11 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
     </div>
   </div>
 
-  <!-- EDITOR -->
   <div class="editor-wrap">
     <textarea class="editor" id="editor" placeholder="Start writing your script here...&#10;&#10;Use the tag buttons above to insert [audio tags] into your text.&#10;&#10;Example:&#10;[excited] Welcome to the show! [pause] [whispers] But first, a secret..."></textarea>
   </div>
 </div>
 
-<!-- BOTTOM BAR -->
 <div class="bottom-bar">
   <button class="btn primary" onclick="selectAndCopy()">
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
@@ -201,7 +191,7 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
   <div class="char-count" id="charCount">0 chars</div>
 </div>
 
-<!-- CUSTOM TAG MODAL -->
+<!-- LIBRARY MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="closeModal(event)">
   <div class="modal" onclick="event.stopPropagation()">
     <h3>
@@ -209,7 +199,14 @@ select.input{font-family:'Outfit',sans-serif;appearance:none;background-image:ur
       My Tag Library
     </h3>
     <div class="input-row">
-      <input class="input" id="customTagInput" placeholder="Tag name (e.g. menacing)" onkeydown="if(event.key==='Enter')addCustomTag()">
+      <input class="input" id="customTagInput" placeholder="Tag name (e.g. menacing)" onkeydown="if(event.key==='Enter')addCustomTag()" style="flex:2;min-width:120px">
+      <select class="input" id="customCatSelect" style="flex:1;min-width:110px">
+        <option value="emotions">Emotions</option>
+        <option value="delivery">Delivery</option>
+        <option value="reactions">Reactions</option>
+        <option value="sfx">SFX</option>
+        <option value="accents">Accents</option>
+      </select>
       <button class="btn primary sm" onclick="addCustomTag()">Add</button>
     </div>
     <div class="custom-list" id="customList"></div>
@@ -223,11 +220,17 @@ let stackMode = false;
 let stack = [];
 let activeTab = 'emotions';
 
-const STORAGE_KEY = 'el_script_custom_tags';
+const STORAGE_KEY = 'el_script_custom_tags_v2';
 let customTags = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
 
-// ── TAG DATA ──
-const tags = {
+// Migrate from v1 format (plain strings → objects)
+if (customTags.length && typeof customTags[0] === 'string') {
+  customTags = customTags.map(t => ({ name: t, category: 'emotions' }));
+  saveCustom();
+}
+
+// ── BUILT-IN TAG DATA ──
+const builtinTags = {
   emotions: [
     'excited','sad','angry','happy','sorrowful','fearful','disgusted',
     'surprised','calm','anxious','nostalgic','hopeful','bitter',
@@ -263,21 +266,19 @@ const tags = {
   ]
 };
 
-const catClass = {
-  emotions:'emotion', delivery:'delivery', reactions:'reaction',
-  sfx:'sfx', accents:'accent', custom:'custom'
-};
+const catClass = { emotions:'emotion', delivery:'delivery', reactions:'reaction', sfx:'sfx', accents:'accent' };
+const catLabels = { emotions:'Emotions', delivery:'Delivery', reactions:'Reactions', sfx:'SFX', accents:'Accents' };
 
-// ── FUNCTIONS ──
-function formatTag(name) {
-  return capsOn ? `[${name.toUpperCase()}]` : `[${name}]`;
-}
+// ── HELPERS ──
+function esc(s) { return s.replace(/'/g, "\\'"); }
+function formatTag(name) { return capsOn ? `[${name.toUpperCase()}]` : `[${name}]`; }
+function getCustomForCat(cat) { return customTags.filter(t => t.category === cat).map(t => t.name); }
 
+// ── CORE ──
 function toggleCaps() {
   capsOn = !capsOn;
   document.getElementById('capsToggle').classList.toggle('on', capsOn);
-  renderTags();
-  renderStack();
+  renderTags(); renderStack();
 }
 
 function toggleStack() {
@@ -288,10 +289,8 @@ function toggleStack() {
 }
 
 function togglePanel() {
-  const panel = document.getElementById('tagPanel');
-  const toggle = document.getElementById('collapseToggle');
-  panel.classList.toggle('collapsed');
-  toggle.classList.toggle('flipped');
+  document.getElementById('tagPanel').classList.toggle('collapsed');
+  document.getElementById('collapseToggle').classList.toggle('flipped');
 }
 
 function switchTab(el) {
@@ -303,27 +302,35 @@ function switchTab(el) {
 
 function renderTags() {
   const grid = document.getElementById('tagGrid');
-  const list = activeTab === 'custom' ? customTags : (tags[activeTab] || []);
-  const cls = catClass[activeTab] || 'custom';
+  const cat = activeTab;
+  const cls = catClass[cat];
+  const builtins = builtinTags[cat] || [];
+  const customs = getCustomForCat(cat);
+  let html = '';
 
-  if (activeTab === 'custom' && list.length === 0) {
-    grid.innerHTML = '<div style="color:var(--text-muted);font-size:13px;padding:8px">No custom tags yet. Tap <b>Library</b> to add your own.</div>';
-    return;
+  // Built-in tags
+  html += builtins.map(t => {
+    const inStack = stack.includes(t);
+    return `<button class="tag-btn ${cls} ${inStack ? 'in-stack' : ''}" onclick="handleTag('${esc(t)}')">${capsOn ? t.toUpperCase() : t}</button>`;
+  }).join('');
+
+  // Custom tags in this category
+  if (customs.length) {
+    html += `<div class="tag-section-label">My custom tags</div>`;
+    html += customs.map(t => {
+      const inStack = stack.includes(t);
+      return `<button class="tag-btn custom ${inStack ? 'in-stack' : ''}" onclick="handleTag('${esc(t)}')">${capsOn ? t.toUpperCase() : t}</button>`;
+    }).join('');
   }
 
-  grid.innerHTML = list.map(t => {
-    const inStack = stack.includes(t);
-    return `<button class="tag-btn ${cls} ${inStack ? 'in-stack' : ''}" onclick="handleTag('${t.replace(/'/g, "\\'")}')">${capsOn ? t.toUpperCase() : t}</button>`;
-  }).join('');
+  grid.innerHTML = html || '<div style="color:var(--text-muted);font-size:13px;padding:8px">No tags in this category.</div>';
 }
 
 function handleTag(name) {
   if (stackMode) {
     const idx = stack.indexOf(name);
-    if (idx > -1) stack.splice(idx, 1);
-    else stack.push(name);
-    renderStack();
-    renderTags();
+    if (idx > -1) stack.splice(idx, 1); else stack.push(name);
+    renderStack(); renderTags();
   } else {
     insertAtCursor(formatTag(name) + ' ');
   }
@@ -331,54 +338,37 @@ function handleTag(name) {
 
 function insertAtCursor(text) {
   const el = document.getElementById('editor');
-  const start = el.selectionStart;
-  const end = el.selectionEnd;
+  const start = el.selectionStart, end = el.selectionEnd;
   el.value = el.value.substring(0, start) + text + el.value.substring(end);
-  const pos = start + text.length;
-  el.selectionStart = el.selectionEnd = pos;
-  el.focus();
-  updateCount();
+  el.selectionStart = el.selectionEnd = start + text.length;
+  el.focus(); updateCount();
 }
 
 function renderStack() {
-  const pills = document.getElementById('stackPills');
-  pills.innerHTML = stack.map((t, i) => `
-    <div class="stack-pill">
-      ${capsOn ? t.toUpperCase() : t}
+  document.getElementById('stackPills').innerHTML = stack.map((t, i) => `
+    <div class="stack-pill">${capsOn ? t.toUpperCase() : t}
       <span class="x" onclick="event.stopPropagation();removeFromStack(${i})">&times;</span>
-    </div>
-  `).join('');
+    </div>`).join('');
 }
 
-function removeFromStack(i) {
-  stack.splice(i, 1);
-  renderStack();
-  renderTags();
-}
+function removeFromStack(i) { stack.splice(i, 1); renderStack(); renderTags(); }
 
 function insertStack() {
   if (!stack.length) return;
-  const text = stack.map(t => formatTag(t)).join(' ') + ' ';
-  insertAtCursor(text);
+  insertAtCursor(stack.map(t => formatTag(t)).join(' ') + ' ');
 }
 
-function clearStack() {
-  stack = [];
-  renderStack();
-  renderTags();
-}
+function clearStack() { stack = []; renderStack(); renderTags(); }
 
 function selectAndCopy() {
   const el = document.getElementById('editor');
-  el.select();
-  el.setSelectionRange(0, el.value.length);
+  el.select(); el.setSelectionRange(0, el.value.length);
   navigator.clipboard.writeText(el.value).then(() => showToast('Copied to clipboard!'));
 }
 
 function clearEditor() {
   if (document.getElementById('editor').value && !confirm('Clear the entire script?')) return;
-  document.getElementById('editor').value = '';
-  updateCount();
+  document.getElementById('editor').value = ''; updateCount();
 }
 
 function updateCount() {
@@ -387,69 +377,86 @@ function updateCount() {
 
 function showToast(msg) {
   const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
+  t.textContent = msg; t.classList.add('show');
   setTimeout(() => t.classList.remove('show'), 1800);
 }
 
-// ── CUSTOM TAGS ──
+// ── CUSTOM TAG LIBRARY ──
 function openCustomModal() {
   document.getElementById('modalOverlay').classList.add('visible');
+  const sel = document.getElementById('customCatSelect');
+  if (sel.querySelector(`option[value="${activeTab}"]`)) sel.value = activeTab;
   renderCustomList();
   setTimeout(() => document.getElementById('customTagInput').focus(), 100);
 }
 
 function closeModal(e) {
-  if (e.target === document.getElementById('modalOverlay')) {
+  if (e.target === document.getElementById('modalOverlay'))
     document.getElementById('modalOverlay').classList.remove('visible');
-  }
 }
 
 function addCustomTag() {
   const input = document.getElementById('customTagInput');
+  const cat = document.getElementById('customCatSelect').value;
   const val = input.value.trim().replace(/^\[|\]$/g, '');
   if (!val) return;
-  if (!customTags.includes(val)) {
-    customTags.push(val);
-    saveCustom();
-  }
-  input.value = '';
-  renderCustomList();
-  if (activeTab === 'custom') renderTags();
+
+  // Duplicate check across builtins + customs
+  const allBuiltins = Object.values(builtinTags).flat().map(s => s.toLowerCase());
+  if (allBuiltins.includes(val.toLowerCase())) { showToast('Already a built-in tag'); return; }
+  if (customTags.find(t => t.name.toLowerCase() === val.toLowerCase())) { showToast('Tag already exists'); return; }
+
+  customTags.push({ name: val, category: cat });
+  saveCustom(); input.value = '';
+  renderCustomList(); renderTags();
+  showToast(`Added to ${catLabels[cat]}`);
 }
 
 function removeCustomTag(i) {
-  const removed = customTags[i];
+  const removed = customTags[i].name;
   customTags.splice(i, 1);
   const si = stack.indexOf(removed);
   if (si > -1) { stack.splice(si, 1); renderStack(); }
-  saveCustom();
-  renderCustomList();
-  if (activeTab === 'custom') renderTags();
+  saveCustom(); renderCustomList(); renderTags();
 }
 
-function saveCustom() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(customTags));
-}
+function saveCustom() { localStorage.setItem(STORAGE_KEY, JSON.stringify(customTags)); }
 
 function renderCustomList() {
-  const list = document.getElementById('customList');
+  const container = document.getElementById('customList');
   if (!customTags.length) {
-    list.innerHTML = '<span style="color:var(--text-muted);font-size:12px">Add tags above — they\'ll appear in the "My Library" tab.</span>';
+    container.innerHTML = '<span style="color:var(--text-muted);font-size:12px">No custom tags yet. Add one above — it\'ll appear in its category tab alongside the built-ins.</span>';
     return;
   }
-  list.innerHTML = customTags.map((t, i) => `
-    <div class="custom-item">
-      <span class="tag-btn custom">${t}</span>
-      <button class="remove" onclick="removeCustomTag(${i})">&times;</button>
-    </div>
-  `).join('');
+  // Group by category
+  const groups = {};
+  customTags.forEach((t, i) => {
+    if (!groups[t.category]) groups[t.category] = [];
+    groups[t.category].push({ ...t, idx: i });
+  });
+
+  const order = ['emotions','delivery','reactions','sfx','accents'];
+  let html = '';
+  for (const cat of order) {
+    if (!groups[cat]) continue;
+    const cls = catClass[cat];
+    html += `<div class="custom-group">
+      <div class="custom-group-label"><span class="custom-group-dot ${cat}"></span>${catLabels[cat]}</div>
+      <div class="custom-group-items">
+        ${groups[cat].map(t => `
+          <div class="custom-item">
+            <span class="tag-btn ${cls}" style="cursor:default">${t.name}</span>
+            <button class="remove" onclick="removeCustomTag(${t.idx})">&times;</button>
+          </div>`).join('')}
+      </div>
+    </div>`;
+  }
+  container.innerHTML = html;
 }
 
 // ── INIT ──
 document.getElementById('editor').addEventListener('input', updateCount);
-renderTags();
-updateCount();
+renderTags(); updateCount();
 </script>
 </body>
 </html>
